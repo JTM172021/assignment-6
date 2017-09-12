@@ -1,5 +1,4 @@
 ###### this is the ps1 .py file ###########
-
 n=raw_input()
 count=0
 count1=0
@@ -17,10 +16,29 @@ else:
 print n_parity
 
 x1=len(n_parity)
+
+#bit stuffing after 010
+
 str2='010'
-for i in range(0,x1):
+for i in range(0,x):
 	if n_parity[i:i+3]==str2:
-		n1_parity=n_parity[:i+3]+'0'+n_parity[i+4:]
+		index=i+3
+
+	n1_parity=n_parity[:index]+'0'+n_parity[index+1:]
+
 #print n1_parity
 
-	
+#to add 0 if the frame ends with 01
+
+str1="01"
+if n_parity[x1-2:]==str1:
+	n1_parity=n1_parity[:len(n1_parity)]+'0'
+
+#print n1_parity
+
+#to add the flag at the end of frame
+
+modified_string=n1_parity[:len(n1_parity)]+'0101'
+
+print modified_string
+
